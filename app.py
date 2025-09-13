@@ -3,6 +3,18 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import butter, lfilter
+from pathlib import Path
+from PIL import Image
+
+# --- loading image---
+def safe_image_show(rel_path: str, caption: str = "", width=None, use_container_width=True):
+    img_path = Path(__file__).parent / rel_path
+    if img_path.exists():
+        img = Image.open(img_path)
+        st.image(img, caption=caption, width=width, use_container_width=use_container_width)
+    else:
+        st.info(f"ℹ️ Axis guide image not found at: `{rel_path}`. "
+                f"Please add it to your repo or provide a URL.")
 
 # --- CSS Styling ---
 st.markdown("""
@@ -355,7 +367,7 @@ mode = st.radio("Select Mode", ["Manual Input", "Upload Dataset"])
 if mode == "Manual Input":
     st.subheader("Axis Guide Overview")
 
-    st.image("Axis_Guide.png", caption="3-axis X-Y-Z", use_container_width=True)
+    safe_image_show("assets/Axis_Guide.png", caption="3-axis X-Y-Z")
 
     st.write("""
     This diagram shows how the X, Y, and Z axes are oriented 
@@ -581,3 +593,4 @@ else:
             st.write("### Detected Combined Unsafe Accelerations")
 
             st.dataframe(pd.DataFrame(combined_rows))
+

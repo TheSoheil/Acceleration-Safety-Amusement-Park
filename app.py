@@ -355,7 +355,7 @@ mode = st.radio("Select Mode", ["Manual Input", "Upload Dataset"])
 if mode == "Manual Input":
     st.subheader("Axis Guide Overview")
 
-    st.image("Axis Guide.png", caption="3-axis X-Y-Z", use_container_width=True)
+    st.image("Axis_Guide.png", caption="3-axis X-Y-Z", use_container_width=True)
 
     st.write("""
     This diagram shows how the X, Y, and Z axes are oriented 
@@ -579,4 +579,5 @@ else:
         ]
         if combined_rows:
             st.write("### Detected Combined Unsafe Accelerations")
+
             st.dataframe(pd.DataFrame(combined_rows))

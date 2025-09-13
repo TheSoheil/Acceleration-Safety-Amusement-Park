@@ -6,16 +6,6 @@ from scipy.signal import butter, lfilter
 from pathlib import Path
 from PIL import Image
 
-# --- loading image---
-def safe_image_show(rel_path: str, caption: str = "", width=None, use_container_width=True):
-    img_path = Path(__file__).parent / rel_path
-    if img_path.exists():
-        img = Image.open(img_path)
-        st.image(img, caption=caption, width=width, use_container_width=use_container_width)
-    else:
-        st.info(f"ℹ️ Axis guide image not found at: `{rel_path}`. "
-                f"Please add it to your repo or provide a URL.")
-
 # --- CSS Styling ---
 st.markdown("""
 <style>
@@ -121,7 +111,31 @@ THRESHOLDS_neg2 = {  # over the shoulder restraint
 }
 
 
-# filter the Data
+# --- loading the image ---
+def safe_image_show(rel_path: str, caption: str = "", width=None, use_column_width=True):
+    """Robust image display that works on Streamlit Cloud + Linux paths."""
+    try:
+        img_path = Path(__file__).parent / rel_path
+        if not img_path.exists():
+            st.info(
+                f"ℹ️ Axis guide image not found at: `{rel_path}`. "
+                "Please add it to your repo (case-sensitive) or provide a URL."
+            )
+            # Optional: uncomment this to debug what files exist:
+            # st.write('CWD:', Path.cwd())
+            # st.write('Here:', Path(__file__).parent)
+            # st.write('Assets contents:', list((Path(__file__).parent / 'assets').glob('*')))
+            return
+
+        img = Image.open(img_path)
+        # IMPORTANT: use_column_width instead of use_container_width for Streamlit Cloud
+        st.image(img, caption=caption, width=width, use_column_width=use_column_width)
+
+    except Exception as e:
+        st.warning(f"Couldn't load image `{rel_path}`. Error: {e}")
+
+
+# --- filter the Data ---
 def butter_lowpass_filter(data, cutoff=5, fs=50, order=4):
     """
     Apply a 4-pole, single-pass Butterworth low-pass filter.
@@ -593,4 +607,5 @@ else:
             st.write("### Detected Combined Unsafe Accelerations")
 
             st.dataframe(pd.DataFrame(combined_rows))
+
 

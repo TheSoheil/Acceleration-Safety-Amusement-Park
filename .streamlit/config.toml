@@ -4,3 +4,19 @@ base = "dark"
 [server]
 maxUploadSize = 200
 headless = true
+# Use polling instead of inotify to avoid 'inotify instance limit reached'
+fileWatcherType = "poll"
+
+# Optionally blacklist folders you don't need to watch
+folderWatchBlacklist = [
+  ".git",
+  "venv",
+  "env",
+  "node_modules",
+  "__pycache__",
+  ".pytest_cache",
+  ".mypy_cache",
+  "data",
+  "datasets",
+  "tmp"
+]

@@ -7,6 +7,8 @@ A Streamlit app to evaluate safety of IMU accelerations based on ISO thresholds:
 - Combined safety check: (ax/ax_adm)^2 + (ay/ay_adm)^2 <= 1 etc.
 - Interactive plots and tables
 - Optional axis inversion toggle (X/Z)
+- 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ride-safety-lab.streamlit.app/)
 
 ## Run locally
 ```bash

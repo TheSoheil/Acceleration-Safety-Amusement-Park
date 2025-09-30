@@ -871,7 +871,7 @@ else:
 
             if all_segments:
                 st.write("### All Segments (Safe and Unsafe)")
-                st.dataframe(pd.DataFrame(all_segments))
+                st.dataframe(pd.DataFrame(all_segments), use_container_width=True)
 
         # --- Section 2: Combined Acceleration Check ---
         st.markdown(
@@ -997,6 +997,7 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 
 

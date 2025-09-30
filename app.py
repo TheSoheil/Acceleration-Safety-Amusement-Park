@@ -632,10 +632,12 @@ else:
         df_preview = df[
             ["time_sec", "acc_x_filtered", "acc_y_filtered", "acc_z_filtered"]
         ]
-        st.write("### Data Preview", df_preview.head(20))
+        st.markdown("### Data Preview")          
+        st.dataframe(df_preview.head(20), use_container_width=True)
         # check if you wanna see the whole data
         if st.checkbox("Show All Data After Processing", value=False):
-            st.write("### Data Preview", df_preview)
+            st.markdown("### Data Preview")          
+            st.dataframe(df_preview, use_container_width=True)
         st.subheader("Note:")
         st.write(
             """
@@ -997,6 +999,7 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 
 

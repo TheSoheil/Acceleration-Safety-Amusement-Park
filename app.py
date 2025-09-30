@@ -81,15 +81,33 @@ st.markdown(
             text-align: center !important;
             border-radius: 8px !important;
         }
-        /* ----- full-width tables ----- */
-        .stDataFrame, .stTable {{
-            width: 100% !important;
-        }}
-        /* (optional) tighten page margins so more space is left for the table */
-        .block-container {{
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-        }}
+        /* Table styling */
+        .stDataFrame {
+            width: 100% !important;  /* Ensure the table takes up full width */
+            table-layout: auto !important;  /* Allow columns to adjust based on content */
+        }
+        
+        table {
+            width: 100% !important;  /* Make sure the table is full width */
+            table-layout: auto !important;  /* Allow table columns to adjust dynamically */
+            color: #333333 !important;  /* Set text color for table content */
+        }
+        
+        th, td {
+            padding: 8px !important;
+            text-align: left !important;
+            border: 1px solid #ddd !important;  /* Border styling */
+        }
+        
+        .stDataFrame > div > div {
+            background-color: #FFFFFF !important;  /* Ensure background color for tables */
+        }
+        
+        .stDataFrame table {
+            width: 100% !important;  /* Full width for tables */
+            font-size: 14px !important;  /* Set font size */
+            word-wrap: break-word !important;  /* Prevent word overflow */
+        }
 
     </style>
     """,
@@ -979,6 +997,7 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 
 

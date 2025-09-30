@@ -81,6 +81,15 @@ st.markdown(
             text-align: center !important;
             border-radius: 8px !important;
         }
+        /* ----- full-width tables ----- */
+        .stDataFrame, .stTable {{
+            width: 100% !important;
+        }}
+        /* (optional) tighten page margins so more space is left for the table */
+        .block-container {{
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }}
 
     </style>
     """,
@@ -970,6 +979,7 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 
 

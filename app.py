@@ -83,20 +83,28 @@ st.markdown(
         }
 
         /* Table styling */
+        .stDataFrame {
+            width: 100% !important;  /* Ensure the table takes up full width */
+            table-layout: fixed !important;  /* Prevent wrapping of columns */
+        }
+        
+        table {
+            width: 100% !important;  /* Ensure table is full width */
+            table-layout: fixed !important;  /* Prevent content from overflowing */
+            color: #333333 !important;  /* Make table text black */
+        }
+        
+        th, td {
+            padding: 8px !important;
+            text-align: left !important;
+            border: 1px solid #ddd !important;
+            white-space: nowrap !important;  /* Prevent text from wrapping */
+        }
+        
         .stDataFrame > div > div {
             background-color: #FFFFFF !important;  /* White background for tables */
         }
 
-        table {
-            width: 100% !important;  /* Make tables full-width */
-            color: #333333 !important;
-        }
-
-        th, td {
-            padding: 8px !important;
-            text-align: left !important;
-            border: 1px solid #ddd !important;  /* Border styling */
-        }
     </style>
     """,
     unsafe_allow_html=True,
@@ -985,5 +993,6 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 

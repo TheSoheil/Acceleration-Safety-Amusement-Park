@@ -12,77 +12,93 @@ st.set_page_config(layout="wide")
 # --- CSS Styling ---
 st.markdown(
     """
-<style>
-    /* Default background and text color */
-    .stApp {
-        background-color: #FFFFFF;  /* White background */
-        color: #333333;  /* Dark text for contrast */
-    }
+    <style>
+        /* Default background and text color */
+        .stApp {
+            background-color: #FFFFFF !important;  /* White background */
+            color: #333333 !important;  /* Dark text for contrast */
+        }
 
-    /* Restore default container behavior */
-    .stContainer {
-        margin: 0;
-        padding: 0;
-    }
+        /* Restore default container behavior */
+        .stContainer {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
 
-    /* Default button styling */
-    div.stButton > button:first-child {
-        background-color: #2196F3;  /* Blue button */
-        color: white;
-        border-radius: 8px;
-        height: 3em;
-        font-size: 16px;
-        border: none;
-    }
+        /* Default button styling */
+        div.stButton > button:first-child {
+            background-color: #2196F3 !important;  /* Blue button */
+            color: white !important;
+            border-radius: 8px !important;
+            height: 3em !important;
+            font-size: 16px !important;
+            border: none !important;
+        }
 
-    div.stButton > button:first-child:hover {
-        background-color: #1976D2;  /* Darker blue for hover effect */
-    }
+        div.stButton > button:first-child:hover {
+            background-color: #1976D2 !important;  /* Darker blue for hover effect */
+        }
 
-    /* Default headers styling */
-    h1 {
-        color: #2196F3;
-        font-size: 36px;
-        text-align: center;
-        font-weight: bold;
-    }
+        /* Default headers styling */
+        h1 {
+            color: #2196F3 !important;
+            font-size: 36px !important;
+            text-align: center !important;
+            font-weight: bold !important;
+        }
 
-    /* Default text for labels and inputs */
-    .stSelectbox label, .stNumberInput label {
-        color: #333333;
-        font-weight: bold;
-    }
+        /* Default text for labels and inputs */
+        .stSelectbox label, .stNumberInput label {
+            color: #333333 !important;
+            font-weight: bold !important;
+        }
 
-    /* Default success/error messages styling */
-    .stSuccess {
-        background-color: #388E3C;
-        color: white;
-        border-radius: 8px;
-        padding: 10px;
-        font-weight: bold;
-    }
+        /* Default success/error messages styling */
+        .stSuccess {
+            background-color: #388E3C !important;
+            color: white !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            font-weight: bold !important;
+        }
 
-    .stError {
-        background-color: #D32F2F;
-        color: white;
-        border-radius: 8px;
-        padding: 10px;
-        font-weight: bold;
-    }
+        .stError {
+            background-color: #D32F2F !important;
+            color: white !important;
+            border-radius: 8px !important;
+            padding: 10px !important;
+            font-weight: bold !important;
+        }
 
-    /* Default markdown styling */
-    .stMarkdown p {
-        color: #333333;
-    }
+        /* Default markdown styling */
+        .stMarkdown p {
+            color: #333333 !important;
+        }
 
-    /* Success/Error Button */
-    .stSuccess, .stError {
-        font-size: 16px;
-        text-align: center;
-        border-radius: 8px;
-    }
-</style>
-""",
+        /* Success/Error Button */
+        .stSuccess, .stError {
+            font-size: 16px !important;
+            text-align: center !important;
+            border-radius: 8px !important;
+        }
+
+        /* Table styling */
+        .stDataFrame > div > div {
+            background-color: #FFFFFF !important;  /* White background for tables */
+        }
+
+        table {
+            width: 100% !important;  /* Make tables full-width */
+            color: #333333 !important;
+        }
+
+        th, td {
+            padding: 8px !important;
+            text-align: left !important;
+            border: 1px solid #ddd !important;  /* Border styling */
+        }
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
@@ -969,4 +985,5 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 

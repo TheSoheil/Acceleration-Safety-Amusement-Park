@@ -821,7 +821,7 @@ else:
 
         if rows:
             st.write("### Unsafe Segments")
-            st.dataframe(pd.DataFrame(rows))
+            st.dataframe(pd.DataFrame(rows), use_container_width=True)
 
         # Table of spikes
         spike_rows = []
@@ -838,7 +838,7 @@ else:
 
         if spike_rows:
             st.write("### Detected Spikes (Above Threshold Magnitudes)")
-            st.dataframe(pd.DataFrame(spike_rows))
+            st.dataframe(pd.DataFrame(spike_rows), use_container_width=True)
 
         # Table of all segments
         if st.checkbox("Show All Segments Table (Safe + Unsafe)", value=False):
@@ -972,7 +972,7 @@ else:
         ]
         if combined_rows:
             st.write("### Detected Unsafe Points in Combined Acceleration")
-            st.dataframe(pd.DataFrame(combined_rows))
+            st.dataframe(pd.DataFrame(combined_rows), use_container_width=True)
 
         # --- Combined pair plots (normalized) ---
         # --- Pairwise combined envelopes in RAW g (ellipsoids) ---
@@ -997,6 +997,7 @@ else:
         with col3:
             fig_xz = pair_plot_raw(gx, gz, "X", "Z", ride_type, "X–Z combined")
             st.plotly_chart(fig_xz, use_container_width=True)
+
 
 
 
